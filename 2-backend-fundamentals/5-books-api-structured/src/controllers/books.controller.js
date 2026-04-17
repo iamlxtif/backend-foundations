@@ -4,15 +4,22 @@ let books = [
 ]
 
 export const getbooks = (req, res) => {
-    const {title, author} = req.query
+    const {title, author, page = 1, limit = 5} = req.query
     const results = books
 
     if (title) results = results.filter(b => b.title.toLowerCase().includes(title.toLowerCase()))
     if (author) results = results.filter(b => b.author.toLowerCase().includes(author.toLowerCase()))
+
+    const total = results.length
+    const start = (parseInt(page) - 1) * parseInt(limit)
+    const paginated = results.slice(start, start + parseInt(limit))
     
     res.json({
-        count: results.length,
-        data: results
+        total,
+        page: parseInt(page),
+        limit: parseInt(limit),
+        pages: Math.ceil(total / parseInt(limit)),
+        data: paginated
     })
 }
 
