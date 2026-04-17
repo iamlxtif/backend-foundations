@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
 app.use('/api/books', booksRouter)
-app.get('/health',(req,res) => {
+app.get('/health', (req, res) => {
     res.json({status: 'ok', timestamp: new Date().toISOString()})
 })
 
