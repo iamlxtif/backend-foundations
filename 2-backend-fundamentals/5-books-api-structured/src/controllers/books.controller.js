@@ -5,7 +5,7 @@ let books = [
 
 export const getbooks = (req, res) => {
     const {title, author, page = 1, limit = 5} = req.query
-    const results = books
+    let results = books
 
     if (title) results = results.filter(b => b.title.toLowerCase().includes(title.toLowerCase()))
     if (author) results = results.filter(b => b.author.toLowerCase().includes(author.toLowerCase()))

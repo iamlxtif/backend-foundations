@@ -234,4 +234,10 @@ NODE_ENV=development
 
 ---
 
+## Testing
+
+All endpoints were tested manually using [Postman](https://www.postman.com). Import the base URL `http://localhost:3000` and test each endpoint using the examples documented above.
+
+---
+
 > **Note:** This API uses an in-memory store. Data resets every time the server restarts. A persistent PostgreSQL database will be added in the next iteration.
