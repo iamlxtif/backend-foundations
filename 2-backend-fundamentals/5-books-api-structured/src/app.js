@@ -1,14 +1,15 @@
 import express from 'express'
 import { config } from 'dotenv'
-import { errorHandler } from './middleware/errorHandler'
+import { errorHandler } from './middleware/errorHandler.js'
 import morgan from 'morgan'
+import booksRouter from './routes/book.routes.js'
 
 config()
 
 const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
-
+app.use('/api/books', booksRouter)
 app.get('/health',(req,res) => {
     res.json({status: 'ok', timestamp: new Date().toISOString()})
 })
